@@ -1,0 +1,49 @@
+server:
+  port: 8082
+
+spring:
+  profiles:
+    active: dev
+
+---
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password:
+    url: jdbc:mysql://localhost:/dev
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  config:
+    activate:
+      on-profile: dev
+welcome:
+  message: Welcome to spring boot example!!
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+        exclude: "env,beans"
+
+
+---
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    password:
+    url: jdbc:mysql://localhost:/sys
+    username: root
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+  config:
+    activate:
+      on-profile: root
+welcome:
+  message: Welcome to spring boot example!!
